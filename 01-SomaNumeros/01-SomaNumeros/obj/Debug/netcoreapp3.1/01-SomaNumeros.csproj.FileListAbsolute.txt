@@ -1,0 +1,13 @@
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\bin\Debug\netcoreapp3.1\01-SomaNumeros.exe
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\bin\Debug\netcoreapp3.1\01-SomaNumeros.deps.json
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\bin\Debug\netcoreapp3.1\01-SomaNumeros.runtimeconfig.json
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\bin\Debug\netcoreapp3.1\01-SomaNumeros.runtimeconfig.dev.json
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\bin\Debug\netcoreapp3.1\01-SomaNumeros.dll
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\bin\Debug\netcoreapp3.1\01-SomaNumeros.pdb
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\obj\Debug\netcoreapp3.1\01-SomaNumeros.csproj.AssemblyReference.cache
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\obj\Debug\netcoreapp3.1\01-SomaNumeros.AssemblyInfoInputs.cache
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\obj\Debug\netcoreapp3.1\01-SomaNumeros.AssemblyInfo.cs
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\obj\Debug\netcoreapp3.1\01-SomaNumeros.csproj.CoreCompileInputs.cache
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\obj\Debug\netcoreapp3.1\01-SomaNumeros.dll
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\obj\Debug\netcoreapp3.1\01-SomaNumeros.pdb
+D:\Study\Dell Lead\Tarefa 01\01-SomaNumeros\01-SomaNumeros\obj\Debug\netcoreapp3.1\01-SomaNumeros.genruntimeconfig.cache

@@ -1,0 +1,13 @@
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\bin\Debug\netcoreapp3.1\02-NumerosPrimos.exe
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\bin\Debug\netcoreapp3.1\02-NumerosPrimos.deps.json
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\bin\Debug\netcoreapp3.1\02-NumerosPrimos.runtimeconfig.json
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\bin\Debug\netcoreapp3.1\02-NumerosPrimos.runtimeconfig.dev.json
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\bin\Debug\netcoreapp3.1\02-NumerosPrimos.dll
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\bin\Debug\netcoreapp3.1\02-NumerosPrimos.pdb
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\obj\Debug\netcoreapp3.1\02-NumerosPrimos.csproj.AssemblyReference.cache
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\obj\Debug\netcoreapp3.1\02-NumerosPrimos.AssemblyInfoInputs.cache
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\obj\Debug\netcoreapp3.1\02-NumerosPrimos.AssemblyInfo.cs
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\obj\Debug\netcoreapp3.1\02-NumerosPrimos.csproj.CoreCompileInputs.cache
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\obj\Debug\netcoreapp3.1\02-NumerosPrimos.dll
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\obj\Debug\netcoreapp3.1\02-NumerosPrimos.pdb
+C:\Users\Savart\source\repos\02-NumerosPrimos\02-NumerosPrimos\obj\Debug\netcoreapp3.1\02-NumerosPrimos.genruntimeconfig.cache
