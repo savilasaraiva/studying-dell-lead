@@ -7,7 +7,8 @@
 Desta forma uma relação de herança é estabelecida quando por exemplo dizemos que uma classe X é do tipo Z e assim a classe Z é mãe de X, fazendo X herdar características de Z.
 
 ## **Classes Abstratas**
-“Pode-se dizer que as classes abstratas servem como “modelo” para outras classes que dela herdem, não podendo ser instanciada por si só. Para ter um objeto de uma classe abstrata é necessário criar uma classe mais especializada herdando dela e então instanciar essa nova classe. Os métodos da classe abstrata devem então ser sobrescritos nas classes filhas.” 
+“Pode-se dizer que as classes abstratas servem como “modelo” para outras classes que dela herdem, não podendo ser instanciada por si só. Para ter um objeto de uma classe abstrata é necessário criar uma classe mais especializada herdando dela e então instanciar essa nova classe. Os métodos da classe abstrata devem então ser sobrescritos nas classes filhas.” (DEVMEDIA, 2021)
+
 Sendo assim as classes abstratas são feitas em especial para serem modelos para suas classes derivadas, e estas por sua vez, sobrescrevem os métodos para realizar a implementação dos mesmos.
 
 
