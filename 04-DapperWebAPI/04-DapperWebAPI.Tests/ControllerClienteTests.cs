@@ -84,7 +84,6 @@ namespace _04_DapperWebAPI.Tests
 
             Cliente cliente = new Cliente()
             {
-                IdCli = 1,
                 Nome = "Teste",
                 Telefone = "Teste2"
             };
@@ -92,11 +91,11 @@ namespace _04_DapperWebAPI.Tests
             // act
             _mockClientRepository.Setup(x => x.Create(cliente)).Returns(cliente).Verifiable();
 
-            ActionResult<Cliente> result = clienteController.Created(nameof(cliente), cliente);
-            OkObjectResult statusResult = (OkObjectResult)result.Result;
+            ActionResult<Cliente> result = clienteController.Created(nameof(clienteController.Get), cliente);
+            CreatedResult statusResult = (CreatedResult)result.Result;
 
             // assert
-            Assert.Equal(200, statusResult.StatusCode);
+            Assert.Equal(201, statusResult.StatusCode);
         }
     }
 }
