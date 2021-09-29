@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-DapperWebAPI", "04-DapperWebAPI\04-DapperWebAPI.csproj", "{3AA8EEAB-A9ED-41BF-BD13-0C78BCE569BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-DapperWebAPI.Tests", "04-DapperWebAPI.Tests\04-DapperWebAPI.Tests.csproj", "{20E20E3E-C57B-41EB-B50B-21954C78B296}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-DapperWebAPI.Tests", "04-DapperWebAPI.Tests\04-DapperWebAPI.Tests.csproj", "{20E20E3E-C57B-41EB-B50B-21954C78B296}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,6 @@
 ﻿using _04_DapperWebAPI.Models;
 using _04_DapperWebAPI.Models.RepositoryInterfaces;
+using _04_DapperWebAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,12 @@ namespace _04_DapperWebAPI.Controllers
     public class EnderecoController : ControllerBase
     {
         private readonly IEnderecoRepository _enderecoRepository;
+        private readonly ViaCepService _cepService;
 
         public EnderecoController(IEnderecoRepository enderecoRepository)
         {
             _enderecoRepository = enderecoRepository;
+            _cepService = new ViaCepService();
         }
 
         // GET: api/<EnderecoController>
@@ -60,6 +63,31 @@ namespace _04_DapperWebAPI.Controllers
             try
             {
                 var result = _enderecoRepository.GetOne(id);
+                if (result == null)
+                    return NotFound();
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message, Result = ex.HResult });
+            }
+        }
+
+        // GET api/<EnderecoController>/5
+        /// <summary>
+        /// Lista enderecos do parametro Cep.
+        /// </summary>
+        /// <returns>Um item da To-do list</returns>
+        /// <response code="200">Retorna os Enderecos com Cep referenciado</response>
+        /// <response code="400">Se não conseguir retornar os Enderecos com Cep</response>
+        /// <response code="404">Se não existir Enderecos com Cep</response>
+        [HttpGet("Search/{cep}")]
+        public ActionResult<IEnumerable<Endereco>> GetAdressAsCep(string cep)
+        {
+            try
+            {
+                var result = _cepService.GetAdress(cep);
                 if (result == null)
                     return NotFound();
 
