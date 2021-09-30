@@ -11,6 +11,6 @@ namespace _06_WebAPI.MongoDB.Models.RespositoryInterfaces
         User GetById(String id);
         User Insert(User user);
         void Update(User user);
-        User Delete(String id);
+        void Delete(String id);
     }
 }

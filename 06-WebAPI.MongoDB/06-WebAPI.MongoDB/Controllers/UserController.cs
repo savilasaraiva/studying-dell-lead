@@ -131,8 +131,21 @@ namespace _06_WebAPI.MongoDB.Controllers
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(String id)
         {
+            try
+            {
+                var result = _userRepository.GetById(id);
+                if (result == null)
+                    return NotFound();
+                _userRepository.Delete(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message, Result = ex.HResult });
+            }
+
         }
     }
 }

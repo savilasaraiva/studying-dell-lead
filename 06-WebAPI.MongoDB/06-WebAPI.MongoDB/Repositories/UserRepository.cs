@@ -39,9 +39,10 @@ namespace _06_WebAPI.MongoDB.Repositories
             var filter = Builders<User>.Filter.Eq(s => s.Id, user.Id);
             var result = _user.ReplaceOneAsync(filter, user);
         }
-        public User Delete(String id)
+        public void Delete(String id)
         {
-            throw new NotImplementedException();
+            var filter = Builders<User>.Filter.Eq(s => s.Id, ObjectId.Parse(id));
+            var result = _user.DeleteOne(filter);
         }
     }
 }
