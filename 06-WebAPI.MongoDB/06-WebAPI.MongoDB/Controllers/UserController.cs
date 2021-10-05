@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using MongoDB.Bson;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace _06_WebAPI.MongoDB.Controllers
 {
@@ -30,6 +29,8 @@ namespace _06_WebAPI.MongoDB.Controllers
         /// <response code="200">Retorna os Usuários da To-do list cadastrados</response>
         /// <response code="404">Se não existir Usuários casdastrados</response>
         [HttpGet]
+        [ProducesResponseType(typeof(User), 200)]
+        [ProducesResponseType(404)]
         public ActionResult<List<User>> Get()
         {
             try
@@ -51,10 +52,18 @@ namespace _06_WebAPI.MongoDB.Controllers
         /// <summary>
         /// Lista um usuário da To-do list.
         /// </summary>
+        /// <remarks>
+        /// Exemplo:
+        ///
+        ///     id: 
+        ///
+        /// </remarks>
         /// <returns>O item da To-do list</returns>
         /// <response code="200">Retorna o Usuário refernte ao Id da To-do list cadastrados</response>
         /// <response code="404">Se não existir Usuário referente ao Id casdastrado</response>
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(User), 200)]
+        [ProducesResponseType(404)]
         public ActionResult<User> Get(String id)
         {
             try
@@ -73,24 +82,27 @@ namespace _06_WebAPI.MongoDB.Controllers
 
         // POST api/<UserController>
         /// <summary>
-        /// Cria um endereco na To-do list.
+        /// Cria um usuario na To-do list.
         /// </summary>
         /// <remarks>
         /// Exemplo:
-        ///
+        /// 
         ///     POST /Todo
         ///     {
-        ///         name:
-        ///         email:
-        ///         password:
-        ///      }
+        ///         name: Maria
+        ///         email: maria@gmail.com
+        ///         password: 123
+        ///     }
         /// </remarks>
         /// <param name="value"></param>
         /// <returns>Um novo item criado</returns>
-        /// <response code="201">Retorna o novo Endereco criado</response>
-        /// <response code="400">Se o Endereco não for cadastrado</response>
-        /// <response code="404">Se não conseguir cadastrar o Endereco</response>
+        /// <response code="201">Retorna o novo Usuário criado</response>
+        /// <response code="400">Se houver algum erro interno</response>
+        /// <response code="404">Se o Usuário não for cadastrado</response>
         [HttpPost]
+        [ProducesResponseType(typeof(User), 201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         public ActionResult<User> Post(User user)
         {
             string passwordHash = BC.HashPassword(user.Password);
@@ -110,8 +122,30 @@ namespace _06_WebAPI.MongoDB.Controllers
             }
         }
 
-        // PUT api/<UsersController>/5
+        // PUT api/<UserController>/5
+        /// <summary>
+        /// Atualiza um endereco na To-do list.
+        /// </summary>
+        /// <remarks>
+        /// Exemplo:
+        ///
+        ///     id: 
+        /// 
+        ///     PUT /Todo
+        ///     {
+        ///         name: Maria
+        ///         email: maria@gmail.com
+        ///         password: 123
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="value"></param>
+        /// <returns>Um item atualizado</returns>
+        /// <response code="200">Se o Usuário for atualizado</response>
+        /// <response code="400">Se o Usuário não for atualizado</response>
         [HttpPut("{id}")]
+        [ProducesResponseType(typeof(User), 200)]
+        [ProducesResponseType(400)]
         public ActionResult<User> Put(String id, User user)
         {
             string passwordHash = BC.HashPassword(user.Password);
@@ -119,9 +153,12 @@ namespace _06_WebAPI.MongoDB.Controllers
 
             try
             {
+                var result = _userRepository.GetById(id);
+                if (result == null)
+                    return NotFound();
                 user.Id = ObjectId.Parse(id);
                 _userRepository.Update(user);
-                return NoContent();
+                return Ok(user);
             }
             catch (Exception ex)
             {
@@ -130,7 +167,25 @@ namespace _06_WebAPI.MongoDB.Controllers
         }
 
         // DELETE api/<UsersController>/5
+        /// <summary>
+        /// Deleta um Usuário da To-do list.
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Exemplo:
+        ///
+        ///     id: 
+        ///
+        /// </remarks>
+        /// <param name="value"></param>
+        /// <returns>Um novo item criado</returns>
+        /// <response code="204">Se o Usuário for deletado</response>
+        /// <response code="400">Se o Usuário não for deletado</response>
+        /// <response code="404">Se o Usuário não for encontrado</response>
         [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(User), 204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         public ActionResult Delete(String id)
         {
             try

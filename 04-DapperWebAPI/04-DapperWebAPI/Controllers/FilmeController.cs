@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using _04_DapperWebAPI.Models;
 using _04_DapperWebAPI.Models.RepositoryInterfaces;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _04_DapperWebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FilmeController : ControllerBase
@@ -82,7 +84,6 @@ namespace _04_DapperWebAPI.Controllers
         ///        "gereno": "Genero do Filme",
         ///      }
         /// </remarks>
-        /// <param name="value"></param>
         /// <returns>Um novo item criado</returns>
         /// <response code="201">Retorna o novo Filme criado</response>
         /// <response code="400">Se o Filme não for cadastrado</response>
@@ -119,7 +120,7 @@ namespace _04_DapperWebAPI.Controllers
         ///      }
         ///
         /// </remarks>
-        /// <param name="value"></param>
+        /// <param name="id" example="id"></param>
         /// <returns>Um item atualizado</returns>
         /// <response code="204">Se o Filme for atualizado</response>
         /// <response code="400">Se o Filme não for atualizado</response>
@@ -144,7 +145,7 @@ namespace _04_DapperWebAPI.Controllers
         /// <summary>
         /// Deleta um filme da To-do list.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="id" example="1"></param>
         /// <returns>Um novo item criado</returns>
         /// <response code="204">Se o Filme for deletado</response>
         /// <response code="400">Se o Filme não for deletado</response>

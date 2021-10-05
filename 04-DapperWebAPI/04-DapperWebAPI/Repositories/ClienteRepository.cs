@@ -54,11 +54,41 @@ namespace _04_DapperWebAPI.Repositories
 
         public Cliente GetOne(int Id)
         {
-            var sqlQuery = @"SELECT * FROM Clientes WHERE c.Id = @Id";
+            /*var sqlQuery = @"SELECT * FROM Clientes WHERE Id = @Id";
 
             using (var connection = new SqlConnection(_connectionString))
             {
                 return connection.QueryFirstOrDefault<Cliente>(sqlQuery, new { Id = Id });
+            }*/
+
+            var sqlQuery = $@"SELECT c.Id as IdCli, 
+                            c.Nome, 
+                            c.Telefone,
+                            e.Id as IdEnd,
+                            e.Logradouro, 
+                            e.Bairro,
+                            e.Numero,
+                            e.Cep
+                    FROM dbo.Clientes c 
+                    INNER JOIN dbo.Enderecos e
+                        ON e.ClienteId = c.Id 
+                    WHERE c.Id = {Id}";
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var cliente = connection.Query<Cliente, Endereco, Cliente>(sqlQuery, (c, e) => {
+                    c.Enderecos = new List<Endereco>();
+                    c.Enderecos.Add(e);
+                    return c;
+                }, splitOn: "IdCli, IdEnd");
+
+                var result = cliente.GroupBy(c => c.IdCli).Select(e =>
+                {
+                    var groupedClientes = e.First();
+                    groupedClientes.Enderecos = e.Select(c => c.Enderecos.Single()).ToList();
+                    return groupedClientes;
+                });
+                return result.Single();
             }
         }
 
@@ -68,8 +98,8 @@ namespace _04_DapperWebAPI.Repositories
 
             using (var connection = new SqlConnection(_connectionString))
             {
-                var result = connection.Query(sqlQuery);
-                var x = result.ToList()[0].id_max;
+                var result = connection.QueryFirst(sqlQuery);
+                var x = result.id_max;
                 return x;
             }
         }

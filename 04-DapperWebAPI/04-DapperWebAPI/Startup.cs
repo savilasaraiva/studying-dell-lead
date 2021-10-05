@@ -1,5 +1,6 @@
 using _04_DapperWebAPI.Models.RepositoryInterfaces;
 using _04_DapperWebAPI.Repositories;
+using _04_DapperWebAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +27,10 @@ namespace _04_DapperWebAPI
         {
             services.AddControllers();
 
+            services.AddHttpClient<ViaCepService>( client => {
+                client.BaseAddress = new System.Uri("https://viacep.com.br/ws/");
+            });
+
             services.AddScoped<IFilmeRepository, FilmeRepository>();
             services.AddScoped<IEnderecoRepository, EnderecoRepository>();
             services.AddScoped<IClienteRepository, ClienteRepository>();
@@ -40,7 +45,6 @@ namespace _04_DapperWebAPI
                     Contact = new OpenApiContact() { Name = "Dev Name", Email = "devmail@dev.com" },
                     License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
                 });
-
 
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -74,7 +78,7 @@ namespace _04_DapperWebAPI
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
 
-            });
+            });            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

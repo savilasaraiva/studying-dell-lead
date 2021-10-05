@@ -10,7 +10,7 @@ namespace _06_WebAPI.MongoDB.Models.RespositoryInterfaces
         List<User> GetAll();
         User GetById(String id);
         User Insert(User user);
-        void Update(User user);
+        User Update(User user);
         void Delete(String id);
     }
 }

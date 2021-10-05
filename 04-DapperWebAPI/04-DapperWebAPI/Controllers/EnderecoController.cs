@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,10 +18,10 @@ namespace _04_DapperWebAPI.Controllers
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly ViaCepService _cepService;
 
-        public EnderecoController(IEnderecoRepository enderecoRepository)
+        public EnderecoController(IEnderecoRepository enderecoRepository, ViaCepService cepService)
         {
             _enderecoRepository = enderecoRepository;
-            _cepService = new ViaCepService();
+            _cepService = cepService;
         }
 
         // GET: api/<EnderecoController>
@@ -83,11 +84,12 @@ namespace _04_DapperWebAPI.Controllers
         /// <response code="400">Se não conseguir retornar os Enderecos com Cep</response>
         /// <response code="404">Se não existir Enderecos com Cep</response>
         [HttpGet("Search/{cep}")]
-        public ActionResult<IEnumerable<Endereco>> GetAdressAsCep(string cep)
+        public async Task<ActionResult<IEnumerable<Endereco>>> GetAdressAsCep(string cep)
         {
             try
             {
-                var result = _cepService.GetAdress(cep);
+                var result = await _cepService.GetAdress(cep);
+
                 if (result == null)
                     return NotFound();
 
@@ -115,7 +117,6 @@ namespace _04_DapperWebAPI.Controllers
         ///         "ClinteId": 1
         ///      }
         /// </remarks>
-        /// <param name="value"></param>
         /// <returns>Um novo item criado</returns>
         /// <response code="201">Retorna o novo Endereco criado</response>
         /// <response code="400">Se o Endereco não for cadastrado</response>
@@ -154,7 +155,7 @@ namespace _04_DapperWebAPI.Controllers
         ///      }
         ///
         /// </remarks>
-        /// <param name="value"></param>
+        /// <param name="id" example="1"></param>
         /// <returns>Um item atualizado</returns>
         /// <response code="204">Se o Endereco for atualizado</response>
         /// <response code="400">Se o Endereco não for atualizado</response>
@@ -180,7 +181,7 @@ namespace _04_DapperWebAPI.Controllers
         /// <summary>
         /// Deleta um endereco da To-do list.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="id" example="1"></param>
         /// <returns>Um novo item criado</returns>
         /// <response code="204">Se o Endereco for deletado</response>
         /// <response code="400">Se o Endereco não for deletado</response>

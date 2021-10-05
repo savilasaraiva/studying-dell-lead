@@ -34,10 +34,11 @@ namespace _06_WebAPI.MongoDB.Repositories
             return user;
         }
 
-        public void Update(User user)
+        public User Update(User user)
         {
             var filter = Builders<User>.Filter.Eq(s => s.Id, user.Id);
-            var result = _user.ReplaceOneAsync(filter, user);
+            var result = _user.ReplaceOne(filter, user);
+            return user;
         }
         public void Delete(String id)
         {

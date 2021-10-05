@@ -31,6 +31,7 @@ namespace _04_DapperWebAPI.Controllers
         /// <response code="400">Se não conseguir retornar Clientes casdastrados</response>
         /// <response code="404">Se não existir Clientes casdastrados</response>
         [HttpGet]
+        [ProducesResponseType(200)]
         public ActionResult<IEnumerable<Cliente>> Get()
         {
             try
@@ -51,11 +52,13 @@ namespace _04_DapperWebAPI.Controllers
         /// <summary>
         /// Lista o cliente do parametro Id.
         /// </summary>
+        /// <param name="id" example="1"></param>
         /// <returns>Um item da To-do list</returns>
         /// <response code="200">Retorna o Cliente cadastrado com id referenciado</response>
         /// <response code="400">Se não conseguir retornar Cliente com Id cadastrado</response>
         /// <response code="404">Se não existir Cliente com Id cadastrado</response>
         [HttpGet("{id}")]
+        [ProducesResponseType(200)]
         public ActionResult<Cliente> Get(int id)
         {
             try
@@ -101,21 +104,17 @@ namespace _04_DapperWebAPI.Controllers
         ///        ]
         ///      }
         /// </remarks>
-        /// <param name="value"></param>
         /// <returns>Um novo item criado</returns>
         /// <response code="201">Retorna o novo Cliente criado</response>
-        /// <response code="400">Se o Cliente não for cadastrado</response>
-        /// <response code="404">Se não conseguir cadastrar o Cliente</response>
+        /// <response code="400">Se não conseguir cadastrar o Cliente</response>
         [HttpPost]
+        [ProducesResponseType(typeof(Cliente), 200)]
         public ActionResult<Cliente> Post(Cliente cliente)
         {
             try
             {
                 var result = _clienteRepository.Create(cliente);
-                
-                if (result == null)
-                    return NotFound();
-
+               
                 int idCliente = GetMaxId();
 
                 if (cliente.Enderecos.Count() > 0)
@@ -126,7 +125,7 @@ namespace _04_DapperWebAPI.Controllers
                         _enderecoRepository.Create(item);
                     }
                 }
-                return Created(nameof(Post), result);
+                return Created(nameof(Get), result);
             }
             catch (Exception ex)
             {
@@ -148,19 +147,20 @@ namespace _04_DapperWebAPI.Controllers
         ///     }
         ///
         /// </remarks>
-        /// <param name="value"></param>
+        /// <param name="id" example="1"></param>
         /// <returns>Um item atualizado</returns>
-        /// <response code="204">Se o Cliente for atualizado</response>
+        /// <response code="200">Se o Cliente for atualizado</response>
         /// <response code="400">Se o Cliente não for atualizado</response>
         [HttpPut("{id}")]
-        public ActionResult Put(int id, Cliente cliente)
+        [ProducesResponseType(200)]
+        public ActionResult<Cliente> Put(int id, Cliente cliente)
         {
             try
             {
                 if (id != cliente.Id) return BadRequest();
                 _clienteRepository.Update(cliente);
 
-                return NoContent();
+                return Ok(cliente);
             }
             catch (Exception ex)
             {
@@ -173,12 +173,13 @@ namespace _04_DapperWebAPI.Controllers
         /// <summary>
         /// Deleta um cliente da To-do list.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="id" example="1"></param>
         /// <returns>Um novo item criado</returns>
-        /// <response code="204">Se o Cliente for deletado</response>
+        /// <response code="200">Se o Cliente for deletado</response>
         /// <response code="400">Se o Cliente não for deletado</response>
         /// <response code="404">Se o Cliente não for encontrado</response>
         [HttpDelete("{id}")]
+        [ProducesResponseType(200)]
         public ActionResult Delete(int id)
         {
             try

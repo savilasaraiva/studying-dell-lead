@@ -90,7 +90,6 @@ namespace _04_DapperWebAPI.Controllers
         ///        "DtLocacao": "2021-09-10T15:40:01"
         ///      }
         /// </remarks>
-        /// <param name="value"></param>
         /// <returns>Um novo item criado</returns>
         /// <response code="201">Retorna a nova Locacao criada</response>
         /// <response code="400">Se a Locacao não for criada</response>
@@ -134,7 +133,6 @@ namespace _04_DapperWebAPI.Controllers
         ///     }
         ///
         /// </remarks>
-        /// <param name="value"></param>
         /// <response code="204">Se a Locacao for atualizada</response>
         /// <response code="400">Se a Locacao não for atualizada</response>
         [HttpPut("{idCli, idFilm}")]
@@ -158,7 +156,6 @@ namespace _04_DapperWebAPI.Controllers
         /// <summary>
         /// Deleta uma locação da To-do list.
         /// </summary>
-        /// <param name="value"></param>
         /// <returns>Um novo item criado</returns>
         /// <response code="204">Se a Locação for deletada</response>
         /// <response code="400">Se a Locação não for deletada</response>

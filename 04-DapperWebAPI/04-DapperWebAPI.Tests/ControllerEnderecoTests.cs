@@ -19,6 +19,7 @@ namespace _04_DapperWebAPI.Tests
         {
             this.mockRepository = new MockRepository(MockBehavior.Default);
             this._mockEnderecoRespository = this.mockRepository.Create<IEnderecoRepository>();
+
         }
 
         private EnderecoController EnderecoController()
