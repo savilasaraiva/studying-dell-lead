@@ -1,6 +1,7 @@
 ﻿using _04_DapperWebAPI.Models;
 using _04_DapperWebAPI.Models.RepositoryInterfaces;
 using _04_DapperWebAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace _04_DapperWebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class EnderecoController : ControllerBase
@@ -156,6 +158,7 @@ namespace _04_DapperWebAPI.Controllers
         ///
         /// </remarks>
         /// <param name="id" example="1"></param>
+        /// <param name="endereco" example=""></param>
         /// <returns>Um item atualizado</returns>
         /// <response code="204">Se o Endereco for atualizado</response>
         /// <response code="400">Se o Endereco não for atualizado</response>

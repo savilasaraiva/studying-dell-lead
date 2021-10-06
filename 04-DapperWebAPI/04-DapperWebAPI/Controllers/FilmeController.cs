@@ -121,6 +121,7 @@ namespace _04_DapperWebAPI.Controllers
         ///
         /// </remarks>
         /// <param name="id" example="id"></param>
+        /// <param name="filme" example=""></param>
         /// <returns>Um item atualizado</returns>
         /// <response code="204">Se o Filme for atualizado</response>
         /// <response code="400">Se o Filme não for atualizado</response>

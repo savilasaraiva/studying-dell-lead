@@ -1,5 +1,6 @@
 ﻿using _04_DapperWebAPI.Models;
 using _04_DapperWebAPI.Models.RepositoryInterfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 
 namespace _04_DapperWebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ClienteController : ControllerBase
@@ -148,6 +150,7 @@ namespace _04_DapperWebAPI.Controllers
         ///
         /// </remarks>
         /// <param name="id" example="1"></param>
+        /// <param name="cliente" example=""></param>
         /// <returns>Um item atualizado</returns>
         /// <response code="200">Se o Cliente for atualizado</response>
         /// <response code="400">Se o Cliente não for atualizado</response>

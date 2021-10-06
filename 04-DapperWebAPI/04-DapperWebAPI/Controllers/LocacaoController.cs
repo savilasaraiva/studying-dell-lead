@@ -1,5 +1,6 @@
 ﻿using _04_DapperWebAPI.Models;
 using _04_DapperWebAPI.Models.RepositoryInterfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 
 namespace _04_DapperWebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LocacaoController : ControllerBase
